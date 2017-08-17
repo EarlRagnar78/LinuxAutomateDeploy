@@ -1,0 +1,4 @@
+SetEnv HTACCESS on
+RewriteEngine On
+RewriteBase /kickstart
+RewriteRule kickstart/(.*) /boot/crif-kickstart.php/$1

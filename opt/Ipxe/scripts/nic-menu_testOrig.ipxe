@@ -1,0 +1,138 @@
+#!ipxe
+#ipxe menu test
+set timeout 10000
+
+:menu
+menu Crif Network boot options for ${uuid}
+item --key a default Try to boot (a)ll network adapters in turn
+item
+item --gap -- --- Detected network adapters ---
+set i:int8 0
+:loop
+ifopen net${i} && item --key ${i} net${i} net(${i}): ${netX/mac} - ${netX/bustype} ${netX/busloc:busdevfn} ${pci/${netX/busloc}.0.2}:${pci/${netX/busloc}.2.2} ${netX/chip} ; ifclose
+inc i
+iseq ${i} 20 || goto loop
+item
+item --gap -- --- Alternatives ---
+item --key c config Open (c)onfiguration
+item --key r reboot (R)eboot computer
+item --key s shell Drop to iPXE (s)hell
+item --key x exit  E(x)it and continue BIOS boot order
+choose --timeout ${timeout} selected && goto select || goto default
+goto menu
+
+:net${i}
+echo TEST
+goto select
+
+:select
+isset ${${selected}/mac} && goto nic || goto label
+
+:nic
+ifstat ${selected}
+echo -n Is this Network Interface [Link:up]?(y/n) ${} && read answer
+iseq ${answer} Y && goto is_correct ||
+iseq ${answer} y && goto is_correct ||
+echo -n Interface have [Link:Down] it can't be configured
+echo -n Return to menu
+clear answer
+sleep 1 
+goto menu
+
+:is_correct
+
+clear answer
+echo -n Would you configure this ${selected} interface?(y/n) ${} && read answer
+iseq ${answer} Y && goto set_ipaddress ||
+iseq ${answer} y && goto set_ipaddress ||
+goto autoboot_selected
+
+:set_ipaddress
+ifopen ${selected}
+set new_ipaddress:ipv4 
+echo -n Please insert ip address: ${} && read new_ipaddress
+set ${selected}/ip ${new_ipaddress} && goto set_netmask || goto exit 
+ 
+
+
+:set_netmask
+set new_netmask:ipv4 
+echo -n Please insert netmask address: ${} && read new_netmask
+set ${selected}/netmask ${new_netmask} && goto set_gateway || goto exit 
+
+:set_gateway
+set new_gateway:ipv4 
+echo -n Please insert gateway address: ${} && read new_gateway
+set ${selected}/gateway ${new_gateway} && goto show_ipconfiguration || goto exit 
+
+:show_ipconfiguration
+echo -n IP configuration:
+echo -n
+route 
+echo -n
+clear answer
+echo -n Is this correct? (y/n) ${} && read answer
+iseq ${answer} Y && goto is_dns ||
+iseq ${answer} y && goto is_dns ||
+iseq ${answer} N && goto set_ipaddress ||
+iseq ${answer} n && goto set_ipaddress ||
+goto exit
+
+
+:is_dns
+clear answer
+echo -n Do you want configure dns server? (y/n) ${} && read answer
+iseq ${answer} Y && goto set_dns ||
+iseq ${answer} y && goto set_dns ||
+iseq ${answer} N && goto chain_filename ||
+iseq ${answer} n && goto chain_filename ||
+goto exit
+
+:set_dns
+set new_dns:ipv4 
+echo -n Please insert dns address: ${} && read new_dns
+set ${selected}/dns ${new_dns} && goto chain_filename || goto exit 
+
+
+:chain_filename
+set  filename:string http://10.0.18.178/boot.php
+echo -n Loading boot menu option from Crif Server
+chain ${filename} 
+goto shell
+
+:autoboot_selected
+autoboot ${selected} && goto exit ||
+echo Booting '${selected}' failed, exiting iPXE...
+goto exit
+
+
+:label
+goto ${selected} || 
+echo The label '${selected}' could not be found, returning to menu...
+sleep 2
+goto restart
+
+:default
+autoboot && goto exit ||
+echo Booting failed, exiting iPXE...
+goto exit
+
+:config
+config
+goto restart
+
+:shell
+shell
+goto restart
+
+:restart
+set timeout 0
+goto menu
+
+:reboot
+reboot
+
+:exit
+echo Continuing BIOS boot order...
+sleep 1
+exit

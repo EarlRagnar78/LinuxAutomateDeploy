@@ -1,0 +1,148 @@
+#!ipxe
+#ipxe menu test
+
+#WARNING: PCnet-PCI II (Am79C970A)
+#         PCnet-PCI III (Am79C973) are not completely supported on iPXE. Use Intel drivers instead.
+
+set timeout 10000
+
+#set network defaults here
+
+#Enable these parameters with the client private key and the client certificate in hex format.
+#set privkey
+#set cert 
+
+set client_default_ip 10.0.2.2 
+set client_default_netmask 255.255.255.0
+set client_default_gateway 10.0.2.2
+set client_default_dns 172.16.0.86
+set client_default_hostname hostname
+set client_default_domain ditoadmin.crifnet.com
+set server_default_filename https://10.0.18.178/Ipxe/boot.php
+set client_default_net_interface net0
+set net_interface default_net_interface
+
+:menu
+menu Crif Network boot options for ${uuid}
+item --key a default Try to boot (a)ll network adapters in turn
+item
+item --gap -- --- Detected network adapters ---
+set i:int8 0
+:loop
+ifopen net${i} && item --key ${i} net${i} Boot from net(${i}): ${netX/mac} - ${netX/bustype} ${netX/busloc:busdevfn} ${pci/${netX/busloc}.0.2}:${pci/${netX/busloc}.2.2} ${netX/chip} ; ifclose
+inc i
+iseq ${i} 20 || goto loop
+item --gap
+item --gap -- --- Alternatives ---
+item --key c config Open (c)onfiguration
+item --key o test Check Server c(o)nnection
+item --key r reboot (R)eboot computer
+item --key s shell Drop to iPXE (s)hell
+item --key x exit  E(x)it and continue BIOS boot order
+choose --timeout ${timeout} selected && goto select || goto default
+goto menu
+
+:select
+isset ${${selected}/mac} && goto configure_interface || goto label
+
+:configure_interface
+set net_interface ${selected}
+ifstat ${selected}
+echo -n Is this Network Interface [Link:up]?(y/n) ${} && read answer
+iseq ${answer} Y && goto run_configure ||
+iseq ${answer} y && goto run_configure ||
+echo -n Interface have [Link:Down] it can't be configured
+echo -n Return to menu
+clear answer
+prompt
+goto menu
+
+:run_configure
+ifopen ${net_interface}
+isset ${setted} && goto configure_interface || goto set_defaults
+:set_defaults
+set ${net_interface}/ip ${client_default_ip}
+set ${net_interface}/netmask ${client_default_netmask}
+set ${net_interface}/gateway ${client_default_gateway}
+set ${net_interface}/filename ${server_default_filename}
+set ${net_interface}/hostname ${client_default_hostname}
+set ${net_interface}/domain ${client_default_domain}
+set ${net_interface}/dns ${client_default_dns}
+
+:configure_interface
+config ${net_interface}
+ifstat ${net_interface}
+set ${setted} 1
+set server_query ?hostname=${${net_interface}/hostname}&domain_name=${${net_interface}/domain}&client_ip=${${net_interface}/ip}&client_netmask=${${net_interface}/netmask}&client_gateway=${${net_interface}/gateway}&client_dns=${${net_interface}/dns}&client_network_mac=${${net_interface}/mac}
+set temp ${${net_interface}/filename}
+clear ${${net_interface}/filename}
+set ${net_interface}/filename ${temp}${server_query}
+chain ${${net_interface}/filename} && goto exit || 
+echo ${${net_interface}/dns}
+echo ${net_interface}: Try to reconfigure automatically. Press any key
+prompt
+clear ${net_interface}/ip
+clear ${net_interface}/mac
+clear ${net_interface}/dns
+clear ${net_interface}/gateway
+clear ${net_interface}/netmask
+set temp ${${net_interface}/filename}
+clear ${${net_interface}/filename}
+ifconf
+echo Automatic Network Parameters.....
+echo Network Interface: ${net_interface}
+echo IP Address:        ${${net_interface}/dns}
+echo MAC Address:       ${${net_interface}/mac}
+echo Gateway:           ${${net_interface}/gateway}
+echo DNS Address:       ${${net_interface}/dns}
+echo Netmask:           ${${net_interface}/netmask}
+prompt
+set ${net_interface}/filename ${temp}${server_query}
+set server_query ?hostname=${${net_interface}/hostname}&domain_name=${${net_interface}/domain}&client_ip=${${net_interface}/ip}&client_netmask=${${net_interface}/netmask}&client_gateway=${${net_interface}/gateway}&client_dns=${${net_interface}/dns}&client_network_mac=${${net_interface}/mac}
+echo ${server_query}
+chain ${${net_interface}/filename} && goto exit ||
+echo Boot failed, press any key to return to main menu
+prompt
+goto menu
+
+:label
+goto ${selected} || 
+echo The label '${selected}' could not be found, press a key to retur to menu...
+prompt
+goto restart
+
+:default
+autoboot && goto exit ||
+echo Booting failed, exiting iPXE...
+goto exit
+
+:config
+config
+goto restart
+
+:shell
+shell
+goto restart
+
+:test
+ifopen
+route  
+ipstat
+ifstat
+echo Press any key...
+ifclose
+prompt
+goto menu
+
+:restart
+set timeout 0
+goto menu
+
+:reboot
+reboot
+
+:exit
+echo Continuing BIOS boot order...
+sleep 1
+exit
+

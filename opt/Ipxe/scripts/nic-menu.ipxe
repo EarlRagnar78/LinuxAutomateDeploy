@@ -1,0 +1,146 @@
+#!ipxe
+#ipxe menu test
+set timeout 10000
+
+#set cert 30:82:07:1f:30:82:06:07:a0:03:02:01:02:02:13:67:00:00:01:ea:8d:7f:2e:db:34:97:bf:39:00:01:00:00:01:ea:30:0d:06:09:2a:86:48:86:f7:0d:01:01:0b:05:00:30:44:31:13:30:11:06:0a:09:92:26:89:93:f2:2c:64:01:19:16:03:63:6f:6d:31:17:30:15:06:0a:09:92:26:89:93:f2:2c:64:01:19:16:07:63:72:69:66:6e:65:74:31:14:30:12:06:03:55:04:03:13:0b:43:52:49:46:2d:53:55:42:2d:43:41:30:1e:17:0d:31:37:30:38:30:32:31:33:35:32:31:34:5a:17:0d:31:38:30:38:30:32:31:33:35:32:31:34:5a:30:81:9b:31:13:30:11:06:0a:09:92:26:89:93:f2:2c:64:01:19:16:03:63:6f:6d:31:17:30:15:06:0a:09:92:26:89:93:f2:2c:64:01:19:16:07:63:72:69:66:6e:65:74:31:19:30:17:06:0a:09:92:26:89:93:f2:2c:64:01:19:16:09:64:69:74:6f:61:64:6d:69:6e:31:16:30:14:06:03:55:04:0b:13:0d:55:73:65:72:20:41:63:63:6f:75:6e:74:73:31:15:30:13:06:03:55:04:03:13:0c:61:69:39:67:69:61:73:61:6d:75:65:6c:31:21:30:1f:06:09:2a:86:48:86:f7:0d:01:09:01:16:12:47:2e:53:61:6d:75:65:6c:65:40:63:72:69:66:2e:63:6f:6d:30:82:01:22:30:0d:06:09:2a:86:48:86:f7:0d:01:01:01:05:00:03:82:01:0f:00:30:82:01:0a:02:82:01:01:00:e6:26:83:8e:64:f4:ce:74:57:17:06:b6:a8:ff:a3:d6:4f:6a:16:d6:b1:78:2b:3b:0b:7f:af:ce:be:55:aa:7b:dd:fb:dc:2a:ed:40:8b:17:13:69:c0:f2:57:4e:ff:43:57:ec:b0:52:03:e9:e8:ef:6d:5f:db:db:22:ad:92:3c:8a:fa:c8:6e:48:be:69:07:6a:84:9a:a4:2e:43:58:2f:8e:44:6b:e3:0a:ba:4a:49:1c:19:a6:c4:76:fb:42:a0:6b:14:d6:a4:a5:27:d4:86:04:06:9b:b9:10:e8:e2:67:51:4d:d0:9a:03:d7:a1:68:b1:f4:4f:01:c7:e4:ee:23:00:97:bd:b4:89:ca:d7:52:27:55:d3:e9:3f:07:e0:55:0e:45:7e:57:0f:af:b4:0d:b5:61:2f:0f:75:84:ed:a2:91:ed:d8:46:7d:b8:0a:96:36:dc:9a:82:89:71:d1:9b:0b:f6:de:80:25:15:cc:f4:7d:75:0b:46:5d:9c:80:41:b7:dc:2e:6e:9f:80:a5:bc:a1:d6:30:eb:d1:e8:0b:8e:a2:10:5d:e6:2f:56:6f:1e:d1:1e:d6:65:f8:32:48:09:ab:47:75:6f:99:47:e9:8a:ba:00:19:2e:12:77:a3:9b:ac:93:87:bc:c2:92:8c:d5:38:04:0b:21:2b:d1:0c:4f:02:03:01:00:01:a3:82:03:b0:30:82:03:ac:30:1d:06:03:55:1d:0e:04:16:04:14:5c:60:5e:33:31:e5:23:60:21:7e:6f:ba:7b:66:03:e9:5b:62:ae:ff:30:1f:06:03:55:1d:23:04:18:30:16:80:14:e3:5a:79:c4:64:fb:47:4a:24:8a:3d:92:79:7f:51:d1:70:b7:56:d8:30:82:01:05:06:03:55:1d:1f:04:81:fd:30:81:fa:30:81:f7:a0:81:f4:a0:81:f1:86:81:b8:6c:64:61:70:3a:2f:2f:2f:43:4e:3d:43:52:49:46:2d:53:55:42:2d:43:41:28:31:29:2c:43:4e:3d:53:55:42:43:41:53:52:56:30:31:2c:43:4e:3d:43:44:50:2c:43:4e:3d:50:75:62:6c:69:63:25:32:30:4b:65:79:25:32:30:53:65:72:76:69:63:65:73:2c:43:4e:3d:53:65:72:76:69:63:65:73:2c:43:4e:3d:43:6f:6e:66:69:67:75:72:61:74:69:6f:6e:2c:44:43:3d:63:72:69:66:6e:65:74:2c:44:43:3d:63:6f:6d:3f:63:65:72:74:69:66:69:63:61:74:65:52:65:76:6f:63:61:74:69:6f:6e:4c:69:73:74:3f:62:61:73:65:3f:6f:62:6a:65:63:74:43:6c:61:73:73:3d:63:52:4c:44:69:73:74:72:69:62:75:74:69:6f:6e:50:6f:69:6e:74:86:34:68:74:74:70:3a:2f:2f:70:6b:69:2e:63:72:69:66:6e:65:74:2e:63:6f:6d:2f:43:65:72:74:45:6e:72:6f:6c:6c:2f:43:52:49:46:2d:53:55:42:2d:43:41:28:31:29:2e:63:72:6c:30:82:01:18:06:08:2b:06:01:05:05:07:01:01:04:82:01:0a:30:82:01:06:30:81:aa:06:08:2b:06:01:05:05:07:30:02:86:81:9d:6c:64:61:70:3a:2f:2f:2f:43:4e:3d:43:52:49:46:2d:53:55:42:2d:43:41:2c:43:4e:3d:41:49:41:2c:43:4e:3d:50:75:62:6c:69:63:25:32:30:4b:65:79:25:32:30:53:65:72:76:69:63:65:73:2c:43:4e:3d:53:65:72:76:69:63:65:73:2c:43:4e:3d:43:6f:6e:66:69:67:75:72:61:74:69:6f:6e:2c:44:43:3d:63:72:69:66:6e:65:74:2c:44:43:3d:63:6f:6d:3f:63:41:43:65:72:74:69:66:69:63:61:74:65:3f:62:61:73:65:3f:6f:62:6a:65:63:74:43:6c:61:73:73:3d:63:65:72:74:69:66:69:63:61:74:69:6f:6e:41:75:74:68:6f:72:69:74:79:30:57:06:08:2b:06:01:05:05:07:30:02:86:4b:68:74:74:70:3a:2f:2f:70:6b:69:2e:63:72:69:66:6e:65:74:2e:63:6f:6d:2f:43:65:72:74:45:6e:72:6f:6c:6c:2f:53:55:42:43:41:53:52:56:30:31:2e:63:72:69:66:6e:65:74:2e:63:6f:6d:5f:43:52:49:46:2d:53:55:42:2d:43:41:28:31:29:2e:63:72:74:30:0b:06:03:55:1d:0f:04:04:03:02:05:a0:30:3d:06:09:2b:06:01:04:01:82:37:15:07:04:30:30:2e:06:26:2b:06:01:04:01:82:37:15:08:86:f2:ac:70:84:e2:bb:32:86:bd:99:10:85:ed:d3:1d:82:c8:95:2f:81:7b:87:b5:2d:83:8c:87:38:02:01:64:02:01:08:30:29:06:03:55:1d:25:04:22:30:20:06:08:2b:06:01:05:05:07:03:02:06:08:2b:06:01:05:05:07:03:04:06:0a:2b:06:01:04:01:82:37:0a:03:04:30:35:06:09:2b:06:01:04:01:82:37:15:0a:04:28:30:26:30:0a:06:08:2b:06:01:05:05:07:03:02:30:0a:06:08:2b:06:01:05:05:07:03:04:30:0c:06:0a:2b:06:01:04:01:82:37:0a:03:04:30:51:06:03:55:1d:11:04:4a:30:48:a0:32:06:0a:2b:06:01:04:01:82:37:14:02:03:a0:24:0c:22:61:69:39:67:69:61:73:61:6d:75:65:6c:40:64:69:74:6f:61:64:6d:69:6e:2e:63:72:69:66:6e:65:74:2e:63:6f:6d:81:12:47:2e:53:61:6d:75:65:6c:65:40:63:72:69:66:2e:63:6f:6d:30:44:06:09:2a:86:48:86:f7:0d:01:09:0f:04:37:30:35:30:0e:06:08:2a:86:48:86:f7:0d:03:02:02:02:00:80:30:0e:06:08:2a:86:48:86:f7:0d:03:04:02:02:00:80:30:07:06:05:2b:0e:03:02:07:30:0a:06:08:2a:86:48:86:f7:0d:03:07:30:0d:06:09:2a:86:48:86:f7:0d:01:01:0b:05:00:03:82:01:01:00:6f:fa:6b:2f:8b:f0:17:af:7e:fd:13:f8:c0:a7:b1:c2:79:ec:e6:b6:bc:e5:c3:33:9e:0e:0f:95:fd:18:08:61:66:95:09:ac:41:3a:6e:f1:14:fc:7c:df:4a:04:7b:88:ea:e8:84:99:72:f3:0e:f2:bc:5d:2b:ce:93:b9:8f:c3:bb:93:e8:40:1f:0f:d7:70:ee:c0:84:df:64:65:38:e3:43:e7:4b:6c:ce:f4:14:e7:de:0c:84:13:4f:f5:44:4b:10:d8:7e:6c:15:fa:43:e0:d9:da:14:c0:d0:b2:e4:e9:0f:75:13:0a:24:90:36:36:3a:4e:eb:84:23:27:64:b2:9f:f6:7d:f0:d1:09:97:c9:51:2b:96:07:86:6d:cd:f3:c4:15:ee:51:53:24:4f:a8:5c:63:b6:ea:dd:1a:bc:66:c7:22:2e:42:01:1f:43:e1:85:b6:95:32:48:8d:75:b4:96:6e:82:4f:40:74:a6:e4:02:12:9f:f7:de:5c:c6:55:40:a2:2e:cc:c3:3d:5a:fd:47:ba:0f:bb:48:82:f5:d8:0e:73:45:3b:f3:14:61:c0:45:cf:0b:57:4d:a5:4e:62:9b:c4:8c:3c:a6:07:cc:aa:64:92:e1:ce:2d:01:bc:0f:d8:ac:98:26:63:cb:5f:73:b2:4c:ad:a5:9a:75:1e:c0
+
+#set privkey 30:82:04:a2:02:01:00:02:82:01:01:00:e6:26:83:8e:64:f4:ce:74:57:17:06:b6:a8:ff:a3:d6:4f:6a:16:d6:b1:78:2b:3b:0b:7f:af:ce:be:55:aa:7b:dd:fb:dc:2a:ed:40:8b:17:13:69:c0:f2:57:4e:ff:43:57:ec:b0:52:03:e9:e8:ef:6d:5f:db:db:22:ad:92:3c:8a:fa:c8:6e:48:be:69:07:6a:84:9a:a4:2e:43:58:2f:8e:44:6b:e3:0a:ba:4a:49:1c:19:a6:c4:76:fb:42:a0:6b:14:d6:a4:a5:27:d4:86:04:06:9b:b9:10:e8:e2:67:51:4d:d0:9a:03:d7:a1:68:b1:f4:4f:01:c7:e4:ee:23:00:97:bd:b4:89:ca:d7:52:27:55:d3:e9:3f:07:e0:55:0e:45:7e:57:0f:af:b4:0d:b5:61:2f:0f:75:84:ed:a2:91:ed:d8:46:7d:b8:0a:96:36:dc:9a:82:89:71:d1:9b:0b:f6:de:80:25:15:cc:f4:7d:75:0b:46:5d:9c:80:41:b7:dc:2e:6e:9f:80:a5:bc:a1:d6:30:eb:d1:e8:0b:8e:a2:10:5d:e6:2f:56:6f:1e:d1:1e:d6:65:f8:32:48:09:ab:47:75:6f:99:47:e9:8a:ba:00:19:2e:12:77:a3:9b:ac:93:87:bc:c2:92:8c:d5:38:04:0b:21:2b:d1:0c:4f:02:03:01:00:01:02:82:01:00:31:10:fc:f3:1a:aa:e6:68:ff:38:35:82:33:bd:6c:9c:80:09:ca:1c:b3:71:3f:26:33:69:61:7d:de:2e:3d:4e:73:21:02:eb:53:f1:72:b5:d4:b9:b3:1c:f7:68:2c:1b:9b:5f:26:a8:15:95:84:c7:a6:b5:cd:15:86:eb:22:46:2e:0b:11:38:11:e2:26:5a:22:67:6a:e0:9d:cc:55:bc:ad:c4:00:8c:42:f9:3c:65:21:cc:86:35:54:78:74:d7:e6:7c:66:d6:6b:2f:76:ab:ab:a8:0d:03:03:8b:e2:d8:cc:08:9e:f4:76:e5:3d:d0:28:40:41:a7:cb:8a:0f:0a:97:c4:eb:f6:8b:91:b3:bf:31:dc:ff:98:3e:45:20:db:91:41:76:72:a5:c7:9d:75:ef:00:c6:b2:94:f9:ba:54:fb:32:46:3c:1d:79:24:a3:e7:09:01:94:ed:a2:ce:7b:ec:5c:f9:44:23:73:b7:47:48:55:57:dc:3c:52:49:92:f5:cf:90:65:51:04:b0:59:15:55:7f:50:c9:04:8c:3a:76:07:b1:27:42:0b:cc:40:c3:22:7e:4d:2c:4d:c7:6a:3e:e8:46:98:8c:a8:2d:36:12:96:8e:03:0f:b3:28:e2:36:50:e5:d8:01:f7:be:cb:4d:ec:13:06:f5:43:75:21:02:81:81:00:fa:83:30:51:9d:fb:7e:fa:7a:b1:33:c1:59:ef:1c:46:a2:1b:e0:2d:fd:29:30:d7:af:8d:76:65:41:de:07:c9:4f:ef:8c:10:d0:39:73:66:b4:f5:9c:78:ee:77:b6:95:24:20:b2:08:35:df:31:df:ab:02:8b:e5:4e:20:2e:dc:f7:b4:f8:2c:56:d2:2e:25:7e:bb:f1:5e:05:4d:0d:be:9a:3c:d9:69:dc:44:65:7e:24:84:f6:8c:36:78:af:5f:a4:9d:88:e6:7b:f0:1b:06:a3:a0:8e:1b:c3:7f:05:41:f9:8f:f2:d7:bc:44:cb:fa:10:d9:3c:fe:a4:35:bc:f5:02:81:81:00:eb:31:23:dc:00:fc:6e:3d:55:7f:96:75:79:68:d0:5b:30:ed:03:4c:3f:43:8a:37:eb:77:6b:35:ad:74:0c:33:e3:89:72:b7:55:02:d6:da:dd:34:4d:27:98:57:e9:f1:42:55:27:89:a8:45:94:80:ee:5b:eb:be:cb:5a:7f:2d:35:5e:b9:93:d4:42:da:6c:e4:3f:07:14:47:7c:c5:fb:f6:7d:90:60:b5:83:f5:e7:0b:15:b5:0e:41:ed:6a:c8:d6:9c:ec:98:01:8d:91:21:a9:d1:ef:e3:5f:33:62:d0:71:5c:eb:23:c3:8a:a4:95:71:0d:e9:6a:91:62:19:b3:02:81:80:23:e1:a4:8b:1c:30:c8:a8:41:e8:9d:bc:25:10:8d:a1:44:58:ef:cc:46:85:9e:dc:55:e5:d2:3e:80:a7:b7:bf:ca:f6:49:be:a2:c4:87:d5:ff:37:6a:d9:1b:77:04:2c:ea:86:d0:59:42:b6:1c:63:a8:0f:ee:4f:c2:d7:f3:3e:6d:30:7b:97:86:3c:06:a6:12:38:03:43:6f:48:f1:1e:0a:e3:8a:54:92:5b:2d:9a:5a:ca:bc:b1:aa:9f:b0:a6:e7:62:35:18:a6:49:e6:e5:15:8c:ca:ae:09:5b:69:3a:60:ef:90:5d:fc:36:72:6c:f7:fa:d5:b4:b7:7a:86:fd:02:81:80:4a:88:93:25:a8:86:56:e5:47:10:1c:fd:73:91:5c:de:59:5d:f3:3a:99:9d:ec:d2:95:e3:8d:6d:40:5f:d3:72:2a:3c:a7:c7:23:c0:b7:98:3a:9b:d5:8b:a3:c2:d0:97:ad:7e:d0:fd:d5:fe:de:f6:11:13:be:5d:03:92:d5:54:dd:61:fc:8b:b5:ab:ce:0e:ce:32:8f:2a:c5:10:ec:a9:51:cf:2f:0f:06:d7:1f:f9:ad:50:9e:c5:3a:ed:63:76:ec:54:64:c2:33:53:ca:d7:91:3a:bf:bc:1d:b2:6a:31:46:8b:bc:d4:e3:a6:2f:4c:50:bc:a8:e9:25:d3:a1:f3:02:81:80:3e:1c:60:75:f2:a0:21:e5:d1:ca:87:af:b0:79:cf:f6:51:e2:46:3d:af:9d:1a:13:09:95:ed:42:03:58:68:7c:ee:aa:80:67:16:8d:cd:76:d9:40:35:3d:8c:b3:ff:b4:19:10:a4:9c:78:ca:a0:44:70:c1:a8:f1:b8:38:d2:75:04:49:cd:a5:f3:55:0e:9f:bc:ac:a7:94:6c:f0:5f:dc:ac:37:4f:b4:d2:8d:c8:b3:11:17:7d:52:74:f6:35:14:05:e9:dc:ea:64:4d:36:33:28:a7:3d:3a:90:a6:cb:59:f3:c1:ce:1d:24:27:ef:f5:ea:11:82:1d:dc:48:9f:ca
+
+
+
+#set network defaults here
+set client_default_ip 10.0.18.180
+set client_default_netmask 255.255.255.0
+set client_default_gateway 10.0.18.1
+set client_default_hostname hostname
+set client_default_domain example.com
+set server_default_filename https://poclinuxmaster.crifnet.com/Ipxe/boot.php
+#set server_default_filename https://10.0.18.178/Ipxe/boot.php
+set client_default_net_interface net0
+set net_interface default_net_interface
+set client_default_dns 172.16.0.76
+
+#set crosscert_default http://10.0.18.178/ca/
+set crosscert_default http://poclinuxmaster.crifnet.com/ca/
+
+
+:menu
+menu Crif Network boot options for ${uuid}
+item --key a default Try to boot (a)ll network adapters in turn
+item
+item --gap -- --- Detected network adapters ---
+set i:int8 0
+:loop
+ifopen net${i} && item --key ${i} net${i} Boot from net(${i}): ${netX/mac} - ${netX/bustype} ${netX/busloc:busdevfn} ${pci/${netX/busloc}.0.2}:${pci/${netX/busloc}.2.2} ${netX/chip} ; ifclose
+inc i
+iseq ${i} 20 || goto loop
+item --gap
+item --gap -- --- Alternatives ---
+item --key c config Open (c)onfiguration
+item --key o test Check Server c(o)nnection
+item --key r reboot (R)eboot computer
+item --key s shell Drop to iPXE (s)hell
+item --key x exit  E(x)it and continue BIOS boot order
+choose --timeout ${timeout} selected && goto select || goto default
+goto menu
+
+:select
+isset ${${selected}/mac} && goto configure_interface || goto label
+
+:configure_interface
+set net_interface ${selected}
+ifstat ${selected}
+echo -n Is this Network Interface [Link:up]?(y/n) ${} && read answer
+iseq ${answer} Y && goto run_configure ||
+iseq ${answer} y && goto run_configure ||
+echo -n Interface have [Link:Down] it can't be configured
+echo -n Return to menu
+clear answer
+prompt
+goto menu
+
+:run_configure
+ifopen ${net_interface}
+isset ${setted} && goto configure_interface || goto set_defaults
+:set_defaults
+set ${net_interface}/ip ${client_default_ip}
+set ${net_interface}/netmask ${client_default_netmask}
+set ${net_interface}/gateway ${client_default_gateway}
+set ${net_interface}/filename ${server_default_filename}
+set ${net_interface}/hostname ${client_default_hostname}
+set ${net_interface}/domain ${client_default_domain}
+set ${net_interface}/dns ${client_default_dns}
+set crosscert ${crosscert_default}
+echo ${client_default_dns}
+echo ${net_interface}/dns
+prompt
+
+:configure_interface
+config ${net_interface}
+ifstat ${net_interface}
+set ${setted} 1
+set server_query ?hostname=${${net_interface}/hostname}&domain_name=${${net_interface}/domain}&client_ip=${${net_interface}/ip}&client_netmask=${${net_interface}/netmask}&client_gateway=${${net_interface}/gateway}&client_dns=${${net_interface}/dns}&client_network_mac=${${net_interface}/mac}
+#set server_query ?hostname=${${net_interface}/hostname}&domain_name=${${net_interface}/domain}&client_ip=${${net_interface}/ip}&client_netmask=${${net_interface}/netmask}&client_gateway=${${net_interface}/gateway}&client_network_mac=${${net_interface}/mac}
+set temp ${${net_interface}/filename}
+clear ${${net_interface}/filename}
+set ${net_interface}/filename ${temp}${server_query}
+chain ${${net_interface}/filename} && goto exit || 
+echo ${net_interface}: Try to reconfigure automatically. Press any key
+prompt
+clear ${net_interface}/ip
+clear ${net_interface}/mac
+clear ${net_interface}/dns                                                                       
+clear ${net_interface}/gateway
+clear ${net_interface}/netmask
+ifconf
+set server_query ?hostname=${${net_interface}/hostname}&domain_name=${${net_interface}/domain}&client_ip=${${net_interface}/ip}&client_netmask=${${net_interface}/netmask}&client_gateway=${${net_interface}/gateway}&client_dns=${${net_interface}/dns}
+set temp ${${net_interface}/filename}
+clear ${${net_interface}/filename}
+set ${net_interface}/filename ${temp}${server_query}
+chain ${${net_interface}/filename} && goto exit ||
+echo Boot failed, press any key to return to main menu
+prompt
+goto menu
+
+
+:label
+goto ${selected} || 
+echo The label '${selected}' could not be found, press a key to retur to menu...
+prompt
+goto restart
+
+:default
+autoboot && goto exit ||
+echo Booting failed, exiting iPXE...
+goto exit
+
+:config
+config
+goto restart
+
+:shell
+shell
+goto restart
+
+:test
+ifopen
+route  
+ipstat
+ifstat
+echo Press any key...
+ifclose
+prompt
+goto menu
+
+:restart
+set timeout 0
+goto menu
+
+:reboot
+reboot
+
+:exit
+echo Continuing BIOS boot order...
+sleep 1
+exit
+
